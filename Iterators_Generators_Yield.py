@@ -33,9 +33,10 @@ def hash(name_or_url= 'text.txt'):
     with open(name_or_url) as f:
         for line in f:
             result = hashlib.md5(line.encode())
-            print(line, f'в формате md5: {result.hexdigest()}')
+            yield (line, f'в формате md5: {result.hexdigest()}')
 
 #запускаем эту функцию с ссылкой на файл
-hash('text.txt')
-
-
+mygenerator = hash('text.txt')
+print(mygenerator)
+for i in mygenerator:
+    print(i)
